@@ -8,6 +8,7 @@ For the last several weeks I have been investigating a group of Windows devices 
 
 ## Device B
 https://github.com/EndpointDetective/geek-dad/tree/main/images/Old-certs.png
+
 https://github.com/EndpointDetective/geek-dad/tree/main/images/enrollment.png
 
 The first clue came from a device that was still fully operational. The device continued receiving policies and had a healthy OMA-DM certificate chain, yet the MMP-C enrollment was recording renewal failures every two days. In the DeviceManagement-Enterprise-Diagnostics-Provider Enrollment log the sequence was consistent: Event 4 (certificate policy request sent successfully), Event 6 (certificate policy response processed successfully), Event 8 (certificate enrollment request sent successfully), followed immediately by Event 52 and Event 11 with HRESULT 0x80190191, an HTTP 401 Unauthorized response. Registry data within the MMP-C enrollment GUID showed RenewStatus=3, RenewErrorCode=80190191, and an enrollment state different from healthy devices. What is significant here is that the request was reaching the service successfully. Policy requests were processed, certificate enrollment requests were submitted, and only after submission did the service reject the request. Removing expired duplicate certificates changed nothing. The same 401 response continued to occur.
