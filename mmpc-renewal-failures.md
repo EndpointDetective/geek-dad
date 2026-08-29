@@ -7,7 +7,7 @@ https://github.com/EndpointDetective/geek-dad/tree/main/images/deviceA.png
 For the last several weeks I have been investigating a group of Windows devices that eventually lost their ability to maintain Intune enrollment. The obvious symptom was an expired Intune certificate chain accompanied by enrollment failures such as certificateStore:0x83750005 and XML parsing errors during re-enrollment. Initially, the problem appeared to be nothing more than expired certificates. However, after comparing multiple healthy and unhealthy systems, I started seeing a different pattern emerge. What caught my attention was not the traditional OMA-DM enrollment, but the newer Microsoft Management Platform Cloud (MMP-C) enrollment that Microsoft has begun deploying alongside classic Intune enrollment. As described by Jannik Reinhard in this wonderful article https://jannikreinhard.com/intune-troubleshooting-guide/ and a few others in the endpoint management community (Rudy Ooms = MVP https://www.linkedin.com/in/rudyooms/), MMP-C is Microsoft's newer management plane designed to support Windows Declared Configuration and eventually reduce reliance on the traditional OMA-DM model. The important detail is that every modern Windows device now effectively has two enrollments: the classic OMA-DM enrollment and a linked MMP-C enrollment.
 
 ## Device B
-https://github.com/EndpointDetective/geek-dad/tree/main/images/Old-certs.png
+https://github.com/EndpointDetective/geek-dad/tree/main/images/Old-Certs.png
 
 https://github.com/EndpointDetective/geek-dad/tree/main/images/enrollment.png
 
